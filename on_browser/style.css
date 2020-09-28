@@ -1,0 +1,48 @@
+
+ul {
+  list-style: none;
+}
+
+ul li#under::before {
+  content: "\2022";
+  color:blue;
+  font-weight: bold;
+  font-size: 30px;
+ /* font-size: x-large;*/
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+} 
+
+ul li#normal::before {
+  content: "\2022";
+  color:green;
+  font-weight: bold;
+  font-size: 30px;
+ /* font-size: x-large;*/
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+} 
+
+ul li#over::before {
+  content: "\2022";
+  color:orange;
+  font-weight: bold;
+  font-size: 30px;
+  /*font-size: x-large;*/
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+} 
+
+ul li#obseity::before {
+  content: "\2022";
+  color:red;
+  font-weight: bold;
+  /*font-size: x-large;*/
+  font-size: 30px;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+} 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js introduction</title>
+	<script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>{{message}}</h1>
+		<button v-on:click="reverse">Reverse Text</button>
+
+		<input type="text" name="name" placeholder="Enter Your Name" v-model="name">
+		<p v-bind:title="titletext">{{name}}</p>
+		<img :src="photo" alt="This is a image">
+		<p v-if="exam">Passed</p>
+		<p v-else>Failed</p>
+
+		<p v-if="mark > 50">Passed</p>
+		<p v-else>Failed</p>
+		<ol>
+			<li v-for="todo in filterTodos">{{todo.text}}</li>
+		</ol>
+		
+
+	</div>
+	
+    
+    <script type="text/javascript">
+    	var app=new Vue({  
+    		el:"#app",
+    		data:{
+    			message:"Hello Vue",
+    			name:"vue in browser",
+    			titletext:"This is a title",
+    			photo:"photo/p1.jpg",
+    			exam:true,
+    			mark:40,
+
+    			todos:[
+    			{text:'Learn JS',status:false},
+    			{text:'Learn Vue',status:false},
+    			{text:'Learn PHP',status:true}
+    			]
+    		},
+   			methods:{
+   				reverse(){
+   					this.message=this.message.split('').reverse('').join('');
+   				}
+    		},
+    		computed:{
+    			filterTodos(){
+    				return this.todos.filter(todo=>todo.status==false)
+    			}
+    		}
+
+
+    	})
+    </script>
+</body>
+</html>

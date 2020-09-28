@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BMI</title>
+	<script type="text/javascript" src="bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="vue.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+	
+</head>
+<body>
+
+	<div class="container" id="app">
+		<div class="row">
+
+			<div class="col-md-2 mt-5">
+				<div class="form-group">
+					<p>Your Height:</p>
+					<!-- <input type="text" name="feet" id="feet" class="form-control">(feet) -->
+				</div>
+			</div>
+			<div class="col-md-5 mt-5">
+				<div class="form-group">
+					<!-- <label for="feet">Height:</label> -->
+					<input type="number" name="feet" id="feet" class="form-control" v-model="feet">(feet)
+				</div>
+			</div>
+
+			<div class="col-md-5 mt-5">
+				<div class="form-group">
+					<!-- <label for="height">Height:</label> -->
+					<input type="number" name="inches" id="inches" class="form-control" v-model="inches">(inches)
+				</div>
+			</div>
+			
+		</div>
+		<div class="row">
+
+			<div class="col-md-2 mt-5">
+				<div class="form-group">
+					<p>Your Weight:</p>
+					<!-- <input type="text" name="feet" id="feet" class="form-control">(feet) -->
+				</div>
+			</div>
+			<div class="col-md-5 mt-5">
+				<div class="form-group">
+					<!-- <label for="feet">Height:</label> -->
+					<input type="number" name="pounds" id="pounds" class="form-control" v-model="pounds">(pounds)
+				</div>
+			</div>
+
+			<!-- <div class="col-md-5 mt-5">
+				<div class="form-group">
+					<label for="height">Height:</label>
+					<input type="text" name="inches" id="inches" class="form-control">(inches)
+				</div>
+			</div> -->
+			
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-2 mt-5">
+				
+			</div>
+			<div class="col-md-5">
+				<button class="btn btn-info" v-on:click="calculate">Calculate</button>
+
+
+				<ul class="mt-5">
+					<li id="under">Underweight</li>
+					<li id="normal">Normal Weight</li>
+					<li id="over">Overweight</li>
+					<li id="obseity">Obseity</li>
+				</ul>
+
+			</div>
+
+
+			<div class="col-md-5">	
+				<h3>Your BMI</h3>
+             
+				<h1 v-if="result <= 18.5" style="color:blue">{{result}}</h1>
+				<h1 v-else-if="result > 18.5 && result < 24.9" style="color:green">{{result}}</h1>
+				<h1 v-else-if="result > 25 && result < 29.9" style="color:orange">{{result}}</h1>
+				<h1 v-else="result > 30" style="color:red">{{result}}</h1>
+
+			</div>
+
+		</div>	
+		
+	</div>
+	<script type="text/javascript">
+		var app=new Vue({
+			el:"#app",
+			data:{
+				feet:"",
+				inches:"",
+				pounds:"",
+				result:"",
+			},
+			methods:{
+				calculate(){
+
+					this.feet=parseInt(this.feet);
+					this.feetinches=parseInt(this.feet*12);
+					this.inches=parseInt(this.inches);
+					this.pounds=parseInt(this.pounds);
+
+					this.height1=parseInt(this.feetinches+this.inches);
+					this.height=parseInt(Math.pow(this.height1, 2));
+					this.weight=parseInt(this.pounds);
+					
+
+					 this.result=(703*(this.weight/this.height)).toFixed(1);
+
+				}
+			}
+		})
+		
+	</script>
+	
+
+</body>
+</html>
